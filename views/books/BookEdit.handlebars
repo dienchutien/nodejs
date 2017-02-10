@@ -1,0 +1,12 @@
+<form method="post" action="/books/edit">
+<input name="id" type="hidden" value="{{ book._id }}" />
+<label>Title</label> <input name="title" type="text" value="{{ book.title }}" />
+<select name="author" class="tw-admin-post-author">
+{{#authors}}
+<option value="{{_id}}"{{#ifCond _id '==' ../book.author._id}}selected{{/ifCond}}>{{name}}</option>
+{{/authors}}
+</select>
+<label>isPublished?</label> <input name="published" type="checkbox" value="published"
+{{#if book.isPublished}}checked{{/if}} />
+<input type="submit" value="Submit" />
+</form>

@@ -1,0 +1,11 @@
+<ul>
+{{#authors}}
+<li>
+<strong>{{name}}</strong> - <a href="/authors/edit/{{ _id }}">Edit</a> 
+<a href="/authors/delete/{{ _id }}" onclick="return confirm('Are you sure?')">Delete</a>
+</li>
+{{ else }}
+<p>There are no authors.</p>
+{{/authors}}
+</ul>
+<a href="/authors/add">Add Author</a>

@@ -1,0 +1,12 @@
+<div class="notifications">
+{{#if notifications.success}}
+<div class="success">
+{{ notifications.success }} {{ notifications.message }}
+</div>
+{{/if}}
+{{#if notifications.error}}
+<div class="error">
+{{ notifications.error }} {{ notifications.message }}
+</div>
+{{/if}}
+</div>

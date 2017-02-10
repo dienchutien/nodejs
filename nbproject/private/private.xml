@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/vuasolo/www/nodejs/static/js/dienct.js</file>
+            <file>file:/home/vuasolo/www/nodejs/controllers/InstallController.js</file>
+            <file>file:/home/vuasolo/www/nodejs/views/home/Index.handlebars</file>
+            <file>file:/home/vuasolo/www/nodejs/views/admin/Index.handlebars</file>
+            <file>file:/home/vuasolo/www/nodejs/router.js</file>
+            <file>file:/home/vuasolo/www/nodejs/app.js</file>
+            <file>file:/home/vuasolo/www/nodejs/models/Models.js</file>
+            <file>file:/home/vuasolo/www/nodejs/controllers/AdminController.js</file>
+            <file>file:/home/vuasolo/www/nodejs/utilities/Authentication.js</file>
+            <file>file:/home/vuasolo/www/nodejs/controllers/APIController.js</file>
+            <file>file:/home/vuasolo/www/nodejs/utilities/Validation.js</file>
+            <file>file:/home/vuasolo/www/nodejs/views/layouts/Main.handlebars</file>
+        </group>
+    </open-files>
+</project-private>

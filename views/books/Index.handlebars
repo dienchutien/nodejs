@@ -1,0 +1,12 @@
+<ul>
+{{#books}}
+<li>
+<strong>{{title}}</strong> by: {{ author.name }} - <a href="/books/edit/{{ _id
+}}">Edit</a> <a href="/books/delete/{{ _id }}" onclick="return confirm('Are you
+sure?')">Delete</a>
+</li>
+{{ else }}
+<p>There are no books.</p>
+{{/books}}
+</ul>
+<a href="/books/add">Add Book</a>

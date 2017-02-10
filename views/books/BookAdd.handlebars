@@ -1,0 +1,11 @@
+<form method="post" action="/books/add">
+<label>Title</label> <input name="title" type="text" />
+<label>Author</label>
+<select name="author" class="">
+{{#authors}}
+<option value="{{_id}}">{{name}}</option>
+{{/authors}}
+</select>
+<label>Is Published?</label> <input name="published" type="checkbox" value="published" />
+<input type="submit" value="Submit" />
+</form>
