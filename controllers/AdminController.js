@@ -13,7 +13,8 @@ exports.Login = function (request, response) {
 };
 exports.Logout = function (request, response) {
     request.session.destroy();
-    response.redirect('/admin/login');
+    response.clearCookie('tencookie');
+    response.redirect('/admin/login')
 };
 exports.VerifyLogin = function (request, response) {
     Model.UserModel.findOne({'name': request.body.username, isAdmin: true}, 'name password',
@@ -25,8 +26,9 @@ exports.VerifyLogin = function (request, response) {
                 if (user) {
 // compare passwords
                     if (bcrypt.compareSync(request.body.password, user.password)) {
-                        request.session.userid = user.name;
-                        response.redirect('/admin');
+                        //request.session.userid = user.name;
+                        response.cookie('tencookie' , user.name, {maxAge : 9999000});
+                        response.redirect('/admin/users');
                     } else {
                         Validation.ErrorRedirect(response, '/admin/login', 'The username or password were incorrect');
                     }
@@ -44,6 +46,7 @@ exports.UsersViewAll = function (request, response) {
         }
         response.pageInfo.title = 'View All Users';
         response.pageInfo.users = result;
+        response.pageInfo.tencookie = request.cookies.tencookie;
         response.render('admin/UsersViewAll', response.pageInfo);
     });
 };
