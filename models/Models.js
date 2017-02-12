@@ -19,6 +19,11 @@ var Book = new mongoose.Schema({
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'Author' },
     isPublished: Boolean
 });
+var Product = new mongoose.Schema({
+    title: String,
+    comment: String,
+    avatar: String
+});
 var User = new mongoose.Schema({
     name: String,
     password: String,
@@ -32,9 +37,11 @@ var Author = new mongoose.Schema({
 var BookModel = mongoose.model('Book', Book);
 var UserModel = mongoose.model('User', User);
 var AuthorModel = mongoose.model('Author', Author);
+var ProductModel = mongoose.model('Product', Product);
 
 module.exports = {
     BookModel: BookModel,
     UserModel: UserModel,
     AuthorModel: AuthorModel,
+    ProductModel: ProductModel
 };

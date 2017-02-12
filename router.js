@@ -5,6 +5,7 @@ var APIController = require('./controllers/APIController');
 var AdminController = require('./controllers/AdminController');
 var InstallController = require('./controllers/InstallController');
 var Authentication = require('./utilities/Authentication');
+var UploadController = require('./controllers/UploadController');
 
 // Routes
 module.exports = function (app) {
@@ -47,5 +48,9 @@ module.exports = function (app) {
     app.get('/install', InstallController.Index);
     app.post('/install', InstallController.Install);
     app.get('/install/success', InstallController.InstallSuccess);
+    // upload file
+    app.get('/product', UploadController.Index);
+    app.get('/upload', UploadController.UploadForm);
+    app.post('/upload', UploadController.Upload);
     
 };

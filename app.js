@@ -9,9 +9,12 @@ var handlebars = require('express-handlebars'), hbs;
 var logger = require('morgan');
 var errorHandler = require('errorhandler');
 var MongoStore = require('connect-mongo')(session);
+//upload
+var fileUpload = require('express-fileupload');//End upload
 var Middleware = require('./utilities/Middleware');
 var config = require('./config');
 
+app.use(fileUpload());
 app.use(Middleware.AppendNotifications);
 
 
