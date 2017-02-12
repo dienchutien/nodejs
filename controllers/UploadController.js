@@ -27,9 +27,9 @@ exports.Upload = function (req, res) {
     // Use the mv() method to place the file somewhere on your server 
     sampleFile.mv('./static/uploads/'+fileName, function (err) {
         if (err) {
-            res.status(500).send(err);
+            console.log('File uploaded ERROR');
         } else {
-            res.send('File uploaded!');
+            console.log('File uploaded');
         }
     });
     
