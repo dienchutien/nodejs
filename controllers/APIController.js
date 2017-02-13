@@ -45,3 +45,31 @@ exports.Register = function (request, response) {
     });
     
 };
+
+//Login
+exports.Login = function (request, response) {
+    var userName = request.body.userName;
+    var password = request.body.password;
+
+    var salt = bcrypt.genSaltSync(10);
+    var passwordHash = bcrypt.hashSync(password, salt);
+    var u = new Model.UserModel({
+        name: userName,
+        password: passwordHash,
+        email: email,
+        isAdmin: true,
+    });
+    u.save(function (error) {
+        if (error) {
+            var obj = {
+                "message": "error",
+            };
+        } else {
+            var obj = {
+                "message": "success",
+            };
+        }
+        response.json(obj);
+    });
+
+};

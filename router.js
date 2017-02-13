@@ -33,6 +33,7 @@ module.exports = function (app) {
     app.get('/api/test', APIController.TestGet);
     app.post('/api/test', APIController.TestPost);
     app.post('/api/register', APIController.Register);
+    app.post('/api/login', APIController.Login);
 // Admin Routes
     app.get('/admin',Authentication.Authenticate,AdminController.Index);
     app.get('/admin/login', AdminController.Login);
