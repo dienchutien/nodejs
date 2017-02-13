@@ -55,7 +55,7 @@ $(function () {
     $("#login-submit").click(function (e) {
         var userName = $('#username').val();
         var password = $('#password').val();
-        if (userName == '' || email == '') {
+        if (userName == '') {
             alert('kiem tra thong tin dau vao');
             return;
         }
@@ -64,13 +64,13 @@ $(function () {
             "password": password            
         };
         jQuery.ajax({
-            url: '/api/register',
+            url: '/api/login',
             dataType: 'json',
             contentType: 'application/json; charset=UTF-8',
             type: 'POST',
             data: JSON.stringify(postData),
             success: function (data, textStatus, jqXHR) {
-                alert(JSON.stringify(data.message));
+                window.location.href = '/admin/users'; //Will take you to Google.
             },
             error: function () {
                 alert(JSON.stringify(data.message));

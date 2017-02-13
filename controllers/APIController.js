@@ -48,28 +48,33 @@ exports.Register = function (request, response) {
 
 //Login
 exports.Login = function (request, response) {
-    var userName = request.body.userName;
-    var password = request.body.password;
-
-    var salt = bcrypt.genSaltSync(10);
-    var passwordHash = bcrypt.hashSync(password, salt);
-    var u = new Model.UserModel({
-        name: userName,
-        password: passwordHash,
-        email: email,
-        isAdmin: true,
-    });
-    u.save(function (error) {
-        if (error) {
-            var obj = {
-                "message": "error",
-            };
-        } else {
-            var obj = {
-                "message": "success",
-            };
-        }
-        response.json(obj);
-    });
+    Model.UserModel.findOne({'name': request.body.userName, isAdmin: true}, 'name password',
+        function (error, user) {
+            if (error) {
+                var obj = {
+                    "message": "Error",                
+                };
+            }
+// user found
+            if (user) {
+// compare passwords
+                if (bcrypt.compareSync(request.body.password, user.password)) {
+                    //request.session.userid = user.name;
+                    response.cookie('tencookie', user.name, {maxAge: 9999000});
+                    var obj = {
+                        "message": "Success",                
+                    };
+                } else {
+                    var obj = {
+                        "message": "Error",                
+                    };
+                }
+            } else {
+                var obj = {
+                    "message": "Error",                
+                };
+            }
+            response.json(obj);
+        });
 
 };
