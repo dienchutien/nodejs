@@ -50,8 +50,8 @@ module.exports = function (app) {
     app.post('/install', InstallController.Install);
     app.get('/install/success', InstallController.InstallSuccess);
     // upload file
-    app.get('/product', UploadController.Index);
-    app.get('/upload', UploadController.UploadForm);
-    app.post('/upload', UploadController.Upload);
+    app.get('/product',Authentication.Authenticate, UploadController.Index);
+    app.get('/upload',Authentication.Authenticate, UploadController.UploadForm);
+    app.post('/upload',Authentication.Authenticate, UploadController.Upload);
     
 };

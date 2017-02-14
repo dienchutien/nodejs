@@ -14,7 +14,7 @@ exports.Login = function (request, response) {
 exports.Logout = function (request, response) {
     request.session.destroy();
     response.clearCookie('tencookie');
-    response.redirect('/admin/login')
+    response.redirect('/')
 };
 exports.VerifyLogin = function (request, response) {
     Model.UserModel.findOne({'name': request.body.username, isAdmin: true}, 'name password',
