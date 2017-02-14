@@ -1,12 +1,23 @@
-<ul>
+<table class="table table-responsive table-hover table-striped table-bordered">
+<tr>    
+    <td><strong>Name</strong></td>
+    <td><strong>Email</strong></td>
+    <td><strong>Action</strong></td>
+</tr>
 {{#users}}
-<li>
-<strong>Name:</strong> {{name}} <strong>Email:</strong> {{email}}
-<a href="/admin/user/edit/{{ _id }}">Edit</a>
-<a href="/admin/users/delete/{{ _id }}" onclick="return confirm('Are you
-sure?')">Delete</a>
-</li>
-{{/users}}
-</ul>
-<a href="/admin/users/add">Add User</a><br/>
-<span class="label label-primary">Hello {{ tencookie }}</span>
+<tr>
+    <td>{{name}}</td>
+    <td>{{email}}</td>    
+    <td>
+        <a title="Edit" href="/admin/user/edit/{{ _id }}" class="not-underline">
+            <button type="button" class="btn btn-primary">Edit</button>
+        </a>
+        <a id="trash_switch_" href="/admin/users/delete/{{ _id }}" title="Delete" class="not-underline"> 
+            <button type="button" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+        </a>
+    </td>
+                        
+        </tr>
+{{/users}}  
+</table>
+<a type="button" href="/admin/users/add" class="btn btn-success">Add User</a>

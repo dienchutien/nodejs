@@ -30,10 +30,10 @@ exports.VerifyLogin = function (request, response) {
                         response.cookie('tencookie' , user.name, {maxAge : 9999000});
                         response.redirect('/admin/users');
                     } else {
-                        Validation.ErrorRedirect(response, '/admin/login', 'The username or password were incorrect');
+                        Validation.ErrorRedirect(response, '/', 'The username or password were incorrect');
                     }
                 } else {
-                    Validation.ErrorRedirect(response, '/admin/login', 'The user is not found in the database');
+                    Validation.ErrorRedirect(response, '/', 'The user is not found in the database');
                 }
             });
 };

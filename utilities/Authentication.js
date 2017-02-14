@@ -3,6 +3,6 @@ exports.Authenticate = function (request, response, next) {
         //console.log(request.cookies.tencookie);
         return next();
     } else {
-        response.redirect('/admin/login');
+        response.redirect('/');
     }
 };
