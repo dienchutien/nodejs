@@ -3,7 +3,6 @@ var app = express();
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var http = require('http');
 var path = require('path');
 var handlebars = require('express-handlebars'), hbs;
 var logger = require('morgan');
@@ -13,6 +12,14 @@ var MongoStore = require('connect-mongo')(session);
 var fileUpload = require('express-fileupload');//End upload
 var Middleware = require('./utilities/Middleware');
 var config = require('./config');
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
+io.emit('some event', { for: 'everyone' });
 
 app.use(fileUpload());
 app.use(Middleware.AppendNotifications);
@@ -78,7 +85,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 require('./router')(app);
-http.createServer(app).listen(app.get('port'), function () {
+http.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
 

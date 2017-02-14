@@ -6,6 +6,7 @@ var AdminController = require('./controllers/AdminController');
 var InstallController = require('./controllers/InstallController');
 var Authentication = require('./utilities/Authentication');
 var UploadController = require('./controllers/UploadController');
+var ChatController = require('./controllers/ChatController');
 
 // Routes
 module.exports = function (app) {
@@ -53,5 +54,8 @@ module.exports = function (app) {
     app.get('/product',Authentication.Authenticate, UploadController.Index);
     app.get('/upload',Authentication.Authenticate, UploadController.UploadForm);
     app.post('/upload',Authentication.Authenticate, UploadController.Upload);
+    
+    //chat
+    app.get('/chat',Authentication.Authenticate, ChatController.Index);
     
 };
