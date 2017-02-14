@@ -1,9 +1,15 @@
-<div>
+<table class="table table-responsive table-hover table-striped table-bordered">
+<tr>    
+    <td><strong>Name</strong></td>
+    <td><strong>Images</strong></td>
+    <td><strong>Description</strong></td>
+</tr>
 {{#product}}
-<strong>{{title}}</strong> 
-<img src="/uploads/{{avatar}}" width="100px" height="100px"/>
-<strong>{{comment}}</strong> <br/>
-{{ else }}
-<p>There are no books.</p>
+<tr>
+    <td>{{title}}</td>
+    <td><img src="/uploads/{{avatar}}" width="100px" height="100px"/></td>
+    <td>{{comment}}</td>
+</tr>
 {{/product}}
-</div>
+</table>
+<a type="button" href="/upload" class="btn btn-success">Add Product</a>
