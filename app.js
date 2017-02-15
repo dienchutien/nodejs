@@ -19,7 +19,6 @@ io.on('connection', function(socket){
     io.emit('chat message', msg);
   });
 });
-io.emit('some event', { for: 'everyone' });
 
 app.use(fileUpload());
 app.use(Middleware.AppendNotifications);
