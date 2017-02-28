@@ -13,10 +13,29 @@ var fileUpload = require('express-fileupload');//End upload
 var Middleware = require('./utilities/Middleware');
 var config = require('./config');
 var http = require('http').Server(app);
+var Model = require('./models/Models');
 var io = require('socket.io')(http);
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
+    console.log(msg);
+    
+    var content = msg.msg;
+    var username = msg.user;
+    
+    var b = new Model.ChatModel({
+        created: new Date(),
+        content: content,
+        username: username,
+    });
+    b.save(function (error) {
+        if (error) {
+            console.log('Error!!!');
+        } else {
+            console.log('Successs!!!');
+        }
+    });
+    
   });
 });
 

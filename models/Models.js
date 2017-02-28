@@ -34,14 +34,22 @@ var Author = new mongoose.Schema({
     name: String
 });
 
+var Chat = new mongoose.Schema({
+    created: Date,
+    content: String,
+    username: String,
+});
+
 var BookModel = mongoose.model('Book', Book);
 var UserModel = mongoose.model('User', User);
 var AuthorModel = mongoose.model('Author', Author);
 var ProductModel = mongoose.model('Product', Product);
+var ChatModel = mongoose.model('Chat', Chat);
 
 module.exports = {
     BookModel: BookModel,
     UserModel: UserModel,
     AuthorModel: AuthorModel,
-    ProductModel: ProductModel
+    ProductModel: ProductModel,
+    ChatModel: ChatModel
 };

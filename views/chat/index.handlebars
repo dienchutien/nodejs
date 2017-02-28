@@ -1,4 +1,10 @@
-<ul id="messages"></ul>
+<ul id="messages">
+{{#chat}}
+<li>
+{{content}}
+</li>
+{{/chat}}
+</ul>
 <form id="frm-chat" action="">
     <input id="m" autocomplete="off" /><button>Send</button>
 </form>
@@ -7,7 +13,7 @@
       var socket = io();
       $('form').submit(function(){
         var msg = $('#name_hidden').val()+': '+$('#m').val();
-        var data = { user: 'dienct', msg : msg};
+        var data = { user: $('#name_hidden').val(), msg : msg};
         socket.emit('chat message', data);
         $('#m').val('');
         return false;
